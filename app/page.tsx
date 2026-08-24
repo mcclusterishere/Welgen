@@ -1,129 +1,65 @@
-"use client";
+const registerUrl = "https://patientportal.advancedmd.com/";
+const programs = [
+  { n: "01", title: "WellScreen", tag: "Preventive screening", text: "Mobile, community-based screenings, biometrics and wellness insights—brought directly to neighborhoods, workplaces and partner events." },
+  { n: "02", title: "WellSure", tag: "Connected support", text: "Remote patient monitoring designed to extend support beyond an appointment and help care teams stay connected to patient progress." },
+  { n: "03", title: "WellCorp", tag: "Workplace wellness", text: "Flexible onsite wellness programming for employers and organizations that want to make preventive care easier to access." },
+  { n: "04", title: "Wellness Care", tag: "Whole-person care", text: "Personalized consultations, diagnostic insights and wellness guidance built around each person’s history and goals." },
+];
+const services = ["Allergy testing", "Diagnostic testing", "Biometrics", "Medical consultation", "IV therapy & B12", "Dietitian & life coaching", "Genetic insights", "Community home care"];
 
-import { useState } from "react";
-import { Send, Terminal, Zap } from "lucide-react";
+export default function Home() {
+  return <main>
+    <header className="nav-wrap">
+      <a className="brand" href="#top" aria-label="Welgen One home"><span className="brand-mark">W1</span><span>Welgen <b>One</b></span></a>
+      <nav aria-label="Primary navigation"><a href="#programs">Programs</a><a href="#how">How it works</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+      <a className="button small" href={registerUrl} target="_blank" rel="noreferrer">Pre-register <span>↗</span></a>
+    </header>
 
-export default function CommandCenter() {
-  const [command, setCommand] = useState("");
-  const [log, setLog] = useState<
-    { type: "user" | "system"; text: string; time: string }[]
-  >([
-    {
-      type: "system",
-      text: "Outreach Machine online. Type a command or use quick actions below.",
-      time: new Date().toLocaleTimeString(),
-    },
-  ]);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!command.trim()) return;
-
-    const userMsg = {
-      type: "user" as const,
-      text: command,
-      time: new Date().toLocaleTimeString(),
-    };
-
-    // Simulated response for scaffold
-    let systemReply = "Command received. (Backend email + outreach engine not yet wired — this is the scaffold.)";
-    if (command.toLowerCase().includes("email") || command.toLowerCase().includes("nonprofit")) {
-      systemReply =
-        "Understood. Preparing nonprofit outreach. In production this will pull your Gmail / list and send. Ready for list + message payload.";
-    } else if (command.toLowerCase().includes("live") || command.toLowerCase().includes("stream")) {
-      systemReply = "Live launcher ready. Connect Meta glasses or camera and go live from /live.";
-    }
-
-    setLog((prev) => [
-      ...prev,
-      userMsg,
-      { type: "system", text: systemReply, time: new Date().toLocaleTimeString() },
-    ]);
-    setCommand("");
-  };
-
-  const quickActions = [
-    "Email 150 nonprofits about getting people off the street",
-    "Show recent kindness content",
-    "Start a live stream",
-    "Open ambassador pricing",
-  ];
-
-  return (
-    <div className="mx-auto max-w-4xl px-4 py-10">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight flex items-center gap-3">
-          <Terminal className="text-accent" />
-          Command Center
-        </h1>
-        <p className="mt-2 text-muted">
-          Talk to the machine. Email nonprofits. Launch content. Control the outreach.
-        </p>
+    <section className="hero" id="top">
+      <div className="hero-copy">
+        <p className="eyebrow"><span /> Mobile wellness · Atlanta, Georgia</p>
+        <h1>Better health should<br />meet you <em>where you are.</em></h1>
+        <p className="lede">Welgen One brings preventive screenings, personalized wellness insights and connected care directly to people, workplaces and communities.</p>
+        <div className="hero-actions"><a className="button" href={registerUrl} target="_blank" rel="noreferrer">Start your wellness journey <span>↗</span></a><a className="text-link" href="#programs">Explore our programs <span>↓</span></a></div>
+        <div className="trust-row"><div><b>20+</b><span>Partner facilities</span></div><div><b>4</b><span>States served</span></div><div><b>50+</b><span>Affiliates</span></div></div>
       </div>
-
-      {/* Chat / Command Log */}
-      <div className="rounded-xl border border-border bg-surface overflow-hidden">
-        <div className="h-80 overflow-y-auto p-4 space-y-3 font-mono text-sm">
-          {log.map((entry, i) => (
-            <div
-              key={i}
-              className={`flex gap-3 ${
-                entry.type === "user" ? "justify-end" : "justify-start"
-              }`}
-            >
-              <div
-                className={`max-w-[80%] rounded-lg px-3 py-2 ${
-                  entry.type === "user"
-                    ? "bg-accent/20 text-accent"
-                    : "bg-background text-muted"
-                }`}
-              >
-                <div className="text-xs opacity-60 mb-1">{entry.time}</div>
-                {entry.text}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <form onSubmit={handleSubmit} className="border-t border-border p-3 flex gap-2">
-          <input
-            type="text"
-            value={command}
-            onChange={(e) => setCommand(e.target.value)}
-            placeholder='e.g. "Email 150 nonprofits saying I\'m getting people off the street..."'
-            className="flex-1 rounded-lg bg-background border border-border px-4 py-3 text-sm focus:outline-none focus:border-accent"
-          />
-          <button
-            type="submit"
-            className="rounded-lg bg-accent px-4 py-3 text-black font-medium hover:bg-accent-dim transition flex items-center gap-2"
-          >
-            <Send size={16} />
-            Send
-          </button>
-        </form>
+      <div className="hero-visual">
+        <img src="/community-leadership.jpeg" alt="Welgen One community leader at a local event" />
+        <div className="hero-card"><span className="pulse" /><div><small>Our care model</small><b>Preventive. Personal. Mobile.</b></div></div>
+        <div className="orbit orbit-one" /><div className="orbit orbit-two" />
       </div>
+    </section>
 
-      {/* Quick Actions */}
-      <div className="mt-6">
-        <p className="text-xs text-muted mb-3 uppercase tracking-wider">Quick Actions</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-          {quickActions.map((action) => (
-            <button
-              key={action}
-              onClick={() => setCommand(action)}
-              className="text-left rounded-lg border border-border bg-surface px-4 py-3 text-sm hover:border-accent/50 hover:bg-accent/5 transition flex items-center gap-2"
-            >
-              <Zap size={14} className="text-accent shrink-0" />
-              {action}
-            </button>
-          ))}
-        </div>
-      </div>
+    <section className="intro" id="programs">
+      <div><p className="eyebrow dark"><span /> One connected wellness platform</p><h2>Care that moves<br />with your life.</h2></div>
+      <p>Traditional care can feel fragmented. Welgen One brings essential health information, clinical guidance and ongoing support into a simpler, community-first experience.</p>
+    </section>
+    <section className="program-grid">
+      {programs.map((p) => <article className="program" key={p.title}><span className="program-num">{p.n}</span><div><p>{p.tag}</p><h3>{p.title}</h3><p className="program-text">{p.text}</p></div><span className="program-arrow">↗</span></article>)}
+    </section>
 
-      <div className="mt-10 rounded-xl border border-border bg-surface/50 p-5 text-sm text-muted">
-        <p className="font-medium text-white mb-1">Scaffold Status</p>
-        This is the live command UI. Backend email engine, Gmail integration, and real list execution will be wired next. The vision is already locked: you talk, the machine acts.
+    <section className="services">
+      <div className="services-copy"><p className="eyebrow"><span /> Wellness services</p><h2>A clearer view of<br />your whole health.</h2><p>Services may vary by location, event, clinical eligibility and provider availability. Our team can help identify the right next step.</p><a className="button light" href="tel:+18664119354">Call 866-411-WELGEN <span>↗</span></a></div>
+      <div className="service-list">{services.map((s, i) => <div key={s}><span>{String(i + 1).padStart(2, "0")}</span><b>{s}</b><span>＋</span></div>)}</div>
+    </section>
+
+    <section className="process" id="how">
+      <div className="section-head"><div><p className="eyebrow dark"><span /> The WellScreen journey</p><h2>From registration<br />to real next steps.</h2></div></div>
+      <div className="steps">
+        <article><span>1</span><h3>Pre-register</h3><p>Submit your information through the secure patient portal for eligibility and insurance review.</p></article>
+        <article><span>2</span><h3>Schedule</h3><p>Choose an appointment and complete your consent and health history forms online.</p></article>
+        <article><span>3</span><h3>Get screened</h3><p>Complete your wellness and diagnostic screening with a clinical consultation.</p></article>
+        <article><span>4</span><h3>Review results</h3><p>Receive results and recommended next steps, typically within about ten business days.</p></article>
       </div>
-    </div>
-  );
+    </section>
+
+    <section className="about" id="about">
+      <div className="portrait"><img src="/welgen-leadership.jpeg" alt="Welgen One representative in Atlanta" /><div className="photo-label"><small>Built in Atlanta</small><b>Rooted in community.</b></div></div>
+      <div className="about-copy"><p className="eyebrow"><span /> About Welgen One</p><h2>Healthcare access begins with trust.</h2><p>Welgen One was created to make personalized, preventive care more accessible—especially through churches, nonprofits, employers and community organizations.</p><p>Our mobile-first model meets people in familiar places, removes unnecessary barriers and makes prioritizing health feel possible.</p><blockquote>“Every customer. Every encounter. Every time.”</blockquote><a className="text-link light-link" href="#contact">Partner with Welgen One <span>→</span></a></div>
+    </section>
+
+    <section className="cta" id="contact"><p className="eyebrow dark"><span /> Your health, in motion</p><h2>Ready to begin?</h2><p>Pre-register online or speak with the Welgen One team about care, events and partnership opportunities.</p><div><a className="button" href={registerUrl} target="_blank" rel="noreferrer">Pre-register today <span>↗</span></a><a className="button outline" href="mailto:info@welgenone.com">Email our team</a></div></section>
+
+    <footer><div className="footer-top"><a className="brand footer-brand" href="#top"><span className="brand-mark">W1</span><span>Welgen <b>One</b></span></a><p>Personalized wellness.<br />Delivered differently.</p><div><a href="tel:+17702120015">770.212.0015</a><a href="mailto:info@welgenone.com">info@welgenone.com</a></div></div><div className="footer-bottom"><span>309 E. Paces Ferry NE, Suite 400, Atlanta, GA 30305</span><span>© 2026 Welgen Global Enterprises LLC.</span><span>Healthcare services are subject to clinical eligibility and availability.</span></div></footer>
+  </main>;
 }
