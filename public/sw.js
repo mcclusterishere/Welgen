@@ -1,5 +1,5 @@
 const CACHE = "jay-connect-v1";
-const SHELL = ["/", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png", "/welgen-leadership.jpeg", "/community-leadership.jpeg"];
+const SHELL = ["/", "/app", "/dashboard", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png", "/welgen-leadership.jpeg", "/community-leadership.jpeg"];
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)));
   self.skipWaiting();

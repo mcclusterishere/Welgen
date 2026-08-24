@@ -2,7 +2,7 @@
   "name": "Jay Johnson Community Connection",
   "short_name": "Jay Connect",
   "description": "Wellness resources, Jay Johnson's story, and a guided community connection intake.",
-  "start_url": "/",
+  "start_url": "/app",
   "scope": "/",
   "display": "standalone",
   "background_color": "#fbfaf7",
@@ -13,7 +13,7 @@
     { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
   ],
   "shortcuts": [
-    { "name": "Wellness", "short_name": "Wellness", "url": "/?tab=wellness" },
-    { "name": "Connect", "short_name": "Connect", "url": "/?tab=connect" }
+    { "name": "Wellness", "short_name": "Wellness", "url": "/app?tab=wellness" },
+    { "name": "Connect", "short_name": "Connect", "url": "/app?tab=connect" }
   ]
 }

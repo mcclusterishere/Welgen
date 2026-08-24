@@ -1,40 +1,45 @@
-# Jay Connect PWA
+# Jay Johnson Platform
 
-Jay Johnson’s mobile-first community connection app.
+A public client-ready website with three connected surfaces.
 
-## The product
+## Public links
 
-The app intentionally has exactly three primary tabs:
+- **Public profile:** `/`
+- **Jay Connect PWA:** `/app`
+- **Professional dashboard:** `/dashboard`
 
-1. **Wellness** — a general health dashboard with daily check-ins, simple wellness tracking and direct access to Welgen One programs and patient intake.
-2. **Jay** — the default center tab, telling Jay Johnson’s story from Chicago to Atlanta and outlining the partnerships and community platform he is building.
-3. **Connect** — a guided, chat-style filter for people seeking support, people who want to help and organizations interested in partnership.
+## Public profile
 
-## Jay Johnson
+The regular page introduces Jay’s Chicago background, 2023 move to Atlanta, community mission, court and community partnership goals, wholesale real-estate relationships and nonprofit aspiration.
 
-Jay is from Chicago and grew up as one of ten children—six boys and four girls. He moved to Atlanta in 2023. His goals include:
+## Jay Connect PWA
 
-- Connecting with court and referral partners to assist people in need
-- Building corporate and wholesale real-estate relationships
-- Serving as an ambassador for community organizations and their programs
-- Creating a nonprofit capable of providing direct assistance
+The installable app has exactly three primary tabs:
 
-## PWA features
+1. **Wellness** — general health check-ins, Welgen One programs and secure patient-intake handoff.
+2. **Jay** — the default center tab with Jay’s story and goals.
+3. **Connect** — guided filtering for people who need help, people who want to help and partner organizations.
 
-- Installable web-app manifest
-- iOS “Add to Home Screen” instructions
-- Service worker and offline app shell
-- 192px and 512px maskable icons
-- Mobile-safe bottom navigation and safe-area support
-- Shareable/copyable connection brief
-- No sensitive intake data is sent or stored in this version
+## Professional dashboard
 
-## Welgen One
+The dashboard gives Jay and the client a polished operational overview:
 
-Welgen One is one wellness lane inside Jay’s broader platform—not the owner or identity of the entire app.
+- Four partnership lanes
+- Public-resource status
+- Intake pathways
+- Quick actions
+- Relationship-pipeline setup
+- Clear next-build checklist
 
-**Patient intake:** https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk  
-**Official site:** https://welgenone.com/
+The current dashboard contains no private intake records. A secure destination and database can be connected after Jay provides his preferred email or phone and the handling policy is established.
+
+## PWA support
+
+- Installable manifest
+- iOS Add to Home Screen guidance
+- Offline app shell
+- Maskable icons
+- Mobile safe-area support
 
 ## Run locally
 
