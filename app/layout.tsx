@@ -3,6 +3,7 @@ import "./globals.css";
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? `https://mcclusterishere.github.io${BASE_PATH}`;
+const SOCIAL_IMAGE = `${SITE_URL.replace(/\/$/, "")}/og.png`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(`${SITE_URL}/`),
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
   manifest: `${BASE_PATH}/manifest.webmanifest`,
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Jay Connect" },
   icons: { icon: `${BASE_PATH}/icon-192.png`, apple: `${BASE_PATH}/icon-192.png` },
-  openGraph: { title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [{ url: `${BASE_PATH}/og.png`, width: 1200, height: 630, alt: "Jay Johnson community connection app" }] },
-  twitter: { card: "summary_large_image", title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [`${BASE_PATH}/og.png`] },
+  openGraph: { title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [{ url: SOCIAL_IMAGE, width: 1200, height: 630, alt: "Jay Johnson community connection app" }] },
+  twitter: { card: "summary_large_image", title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [SOCIAL_IMAGE] },
 };
 
 export const viewport: Viewport = {
