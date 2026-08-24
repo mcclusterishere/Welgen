@@ -4,9 +4,9 @@ A public client-ready website with three connected surfaces.
 
 ## Public links
 
-- **Public profile:** `/`
-- **Jay Connect PWA:** `/app`
-- **Professional dashboard:** `/dashboard`
+- **Public profile:** https://jnhelevate.com/
+- **Jay Connect PWA:** https://jnhelevate.com/app/
+- **Professional dashboard:** https://jnhelevate.com/dashboard/
 
 ## Public profile
 
