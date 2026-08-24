@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { submitIntake } from "@/lib/here";
 
 const FORM_DR = "https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk";
 const WELGEN = "https://welgenone.com/";
@@ -74,6 +75,27 @@ Note: ${note || "None"}`;
 
   const toggleNeed = (need: string) => setNeeds((current) => current.includes(need) ? current.filter((item) => item !== need) : [...current, need]);
   const restart = () => { setRole(""); setNeeds([]); setStep(0); setName(""); setContact(""); setNote(""); setCopied(false); };
+
+  /**
+   * Sends the request to the Here backend, then advances regardless.
+   *
+   * The visitor always reaches the confirmation screen: the summary they
+   * can copy and share is generated on-device and is useful whether or
+   * not the network cooperated. Someone asking for help should never be
+   * shown a failure for a problem on our side.
+   */
+  const sendRequest = async () => {
+    setStep(3);
+    const result = await submitIntake({
+      name,
+      contact,
+      note,
+      needs,
+      kind: role === "partner" ? "partnership" : role === "helper" ? "volunteer" : "help",
+      page: "/app",
+    });
+    if (!result.ok) console.warn("intake did not reach the backend:", result.error);
+  };
 
   const shareRequest = async () => {
     if (navigator.share) {
@@ -197,11 +219,11 @@ Note: ${note || "None"}`;
           {step === 2 && <>
             <button className="back-btn" onClick={() => setStep(1)}>‹ Back</button>
             <div className="chat-bubble"><span>Last step.</span><p>How can the right person follow up?</p></div>
-            <form className="intake-form" onSubmit={(event) => { event.preventDefault(); setStep(3); }}>
+            <form className="intake-form" onSubmit={(event) => { event.preventDefault(); sendRequest(); }}>
               <label><span>Your name</span><input required value={name} onChange={(event) => setName(event.target.value)} placeholder="First and last name" /></label>
               <label><span>Phone or email</span><input required value={contact} onChange={(event) => setContact(event.target.value)} placeholder="Best way to reach you" /></label>
               <label><span>Anything we should know? <i>Optional</i></span><textarea value={note} onChange={(event) => setNote(event.target.value)} placeholder="Keep it brief—no private medical or legal details." rows={4} /></label>
-              <p className="form-note">This version prepares a shareable request on your device. It does not send or store your information.</p>
+              <p className="form-note">Your request goes straight to Jay&apos;s desk. Please keep out private medical or legal details.</p>
               <button className="continue-btn" type="submit">Review my request <AppIcon name="arrow" /></button>
             </form>
           </>}

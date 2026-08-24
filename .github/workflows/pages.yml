@@ -37,6 +37,13 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+          # Backend (the Here Supabase project). Safe to expose: the anon
+          # key is public by design and every table is behind row-level
+          # security. Without these the site still builds and renders —
+          # the intake form and /admin just report that no backend is
+          # configured instead of failing silently.
+          NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: npm run build
 
       - name: Disable Jekyll processing
