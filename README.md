@@ -7,7 +7,7 @@ This repository supports operations for **Welgen One** (mobile wellness services
 
 **Address reference**: 4166 Snapfinger Drive / Snapfinger Woods Drive, Decatur, GA 30035 (commercial medical/office space).
 
-**Patient / Intake Form**: [FormDr Practice Form](https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wkRSW)
+**Patient / Intake Form**: [FormDr Practice Form](https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk)
 
 ## Goals
 1. Automate email outreach related to acquiring **foreclosed housing**.
