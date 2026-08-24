@@ -10,7 +10,7 @@ export default function MissionPage() {
         </h1>
         <p className="mt-3 text-lg text-muted leading-relaxed">
           Get people off the street. Be genuine on camera. Build real partnerships with nonprofits.
-          Use Welgen wellness as the practical hand that helps.
+          Welgen One wellness representation is one practical lane that helps connect people to care.
         </p>
       </div>
 
@@ -62,7 +62,7 @@ export default function MissionPage() {
           4166 Snapfinger Drive / Snapfinger Woods Drive  
           Decatur, Georgia 30035
         </p>
-        <p className="mt-2">This website is the control panel for the whole machine.</p>
+        <p className="mt-2">This website brings Jay’s community, content, wellness and partnership work into one platform.</p>
       </div>
     </div>
   );

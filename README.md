@@ -1,53 +1,47 @@
-# Welgen Outreach Machine
+# Jay Johnson Platform
 
-**This is not a brochure site.**  
-It is the command center for kindness content, nonprofit outreach, and paid ambassador partnerships.
+Jay Johnson’s personal-business and community-impact website.
 
-## Live Scaffold (Next.js + Tailwind)
+This is a multi-lane platform—not a Welgen One corporate website. Welgen One is one independent wellness organization Jay represents as part of a broader mix of community work, content, nonprofit partnerships and live activations.
 
-### Pages built
+## Public experience
+
 | Route | Purpose |
-|-------|---------|
-| `/` | **Command Center** – talk to the machine (chat UI). Type commands like “email 150 nonprofits…” |
-| `/content` | Kindness Content library – place for Meta glasses street footage |
-| `/outreach` | Email campaign builder – subject, body, count of nonprofits |
-| `/ambassador` | Paid nonprofit partnership tiers (Street / Impact / Custom) |
-| `/live` | Go-live launcher + cross-post placeholder |
-| `/mission` | Mission statement + Welgen wellness + housing ambition + FormDr link |
+|---|---|
+| `/` | Jay Johnson overview and business lanes |
+| `/content` | Community and kindness content |
+| `/outreach` | Nonprofit outreach workspace |
+| `/ambassador` | Partnership and representation options |
+| `/live` | Live-content launcher |
+| `/mission` | Community mission, Welgen lane and housing ambition |
 
-### Stack
-- Next.js 14 (App Router)
+## Jay’s lanes
+
+1. Community and kindness content
+2. Nonprofit ambassador partnerships
+3. Welgen One community wellness representation
+4. Live coverage and brand activations
+5. Long-term housing and community-resource mission
+
+## Welgen One relationship
+
+Welgen One is presented as one section of Jay’s platform. Patient eligibility, healthcare services and scheduling remain the responsibility of Welgen One and its clinical partners.
+
+**Patient intake:** https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk  
+**Official Welgen One site:** https://welgenone.com/
+
+## Stack
+
+- Next.js 14 App Router
 - TypeScript
-- Tailwind CSS (dark street-authentic theme)
+- Tailwind CSS
 - Lucide icons
 
-### Run locally
+## Run locally
+
 ```bash
 npm install
 npm run dev
 ```
-Open http://localhost:3000
 
-### Deploy
-Push to Vercel (or any Next host). Zero config needed for the scaffold.
-
----
-
-## The Vision (locked)
-1. Authentic street conversations recorded with Meta glasses → kindness content.
-2. Content gets monetized + generates tips/Cash Apps.
-3. Website is the operator console: “Hey website, email these nonprofits…”
-4. Nonprofits pay to make James their street ambassador.
-5. Welgen wellness (mobile check-ups, FormDr) + housing non-profit sit inside the same mission.
-
-**Address**: 4166 Snapfinger Drive / Snapfinger Woods Drive, Decatur, GA 30035  
-**FormDr**: [Patient form](https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk)
-
-## Next wiring (priority order)
-1. Gmail / email service connection for real outreach campaigns
-2. Content upload + embedding for first Meta glasses footage
-3. Stripe for ambassador payments
-4. Live stream + social cross-post integrations
-
----
-*The website is the control panel. Everything else is execution.*
+Open http://localhost:3000.

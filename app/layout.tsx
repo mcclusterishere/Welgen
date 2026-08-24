@@ -1,22 +1,10 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "./globals.css";\nimport { Navbar } from "@/components/Navbar";
 export const metadata: Metadata = {
   metadataBase: new URL("https://welgen-one-modern.mccluster.chatgpt.site"),
-  title: "Welgen One | Mobile Wellness, Personalized",
-  description: "Preventive screenings, wellness insights and connected care delivered to communities, workplaces and partner organizations.",
-  openGraph: {
-    title: "Welgen One",
-    description: "Better health should meet you where you are.",
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Welgen One — Better health should meet you where you are." }],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Welgen One",
-    description: "Better health should meet you where you are.",
-    images: ["/og.png"],
-  },
-  icons: { icon: "/favicon.svg", shortcut: "/favicon.svg" },
+  title: "Jay Johnson | Community. Content. Opportunity.",
+  description: "Jay Johnson connects communities, nonprofits, wellness resources and brands through authentic representation and content.",
+  openGraph: { title: "Jay Johnson", description: "Community. Content. Opportunity.", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Jay Johnson — Community. Content. Opportunity." }] },
+  twitter: { card: "summary_large_image", title: "Jay Johnson", description: "Community. Content. Opportunity.", images: ["/og.png"] },
 };
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  return <html lang="en"><body>{children}</body></html>;
-}
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en"><body><Navbar />{children}</body></html>; }

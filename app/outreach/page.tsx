@@ -8,11 +8,11 @@ export default function OutreachPage() {
   const [body, setBody] = useState(
     `Hey,
 
-I'm actively on the ground getting homeless people off the street and connecting them with real help. I'm building a network of nonprofits who want an authentic ambassador on the street.
+I'm active in the community, connecting people with real help and making mission-driven work more visible. I'm building a network of nonprofits that want an authentic representative on the ground.
 
 Would love to connect and see how we can support each other's missions.
 
-— James`
+— Jay`
   );
   const [count, setCount] = useState(150);
 

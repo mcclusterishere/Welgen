@@ -11,7 +11,7 @@ const placeholderContent = [
   {
     id: 2,
     title: "Ride-along kindness series (ep 1–5)",
-    description: "Operator wears glasses, James approaches people on the street.",
+    description: "Operator wears glasses, Jay approaches people on the street.",
     status: "Planned",
     views: "—",
   },

@@ -1,65 +1,97 @@
-const registerUrl = "https://patientportal.advancedmd.com/";
-const programs = [
-  { n: "01", title: "WellScreen", tag: "Preventive screening", text: "Mobile, community-based screenings, biometrics and wellness insights—brought directly to neighborhoods, workplaces and partner events." },
-  { n: "02", title: "WellSure", tag: "Connected support", text: "Remote patient monitoring designed to extend support beyond an appointment and help care teams stay connected to patient progress." },
-  { n: "03", title: "WellCorp", tag: "Workplace wellness", text: "Flexible onsite wellness programming for employers and organizations that want to make preventive care easier to access." },
-  { n: "04", title: "Wellness Care", tag: "Whole-person care", text: "Personalized consultations, diagnostic insights and wellness guidance built around each person’s history and goals." },
+const formDrUrl = "https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk";
+const welgenUrl = "https://welgenone.com/";
+
+const lanes = [
+  { number: "01", title: "Community Content", kicker: "Real people. Real moments.", text: "Street-level conversations and acts of kindness captured naturally—content that creates attention without losing the humanity in the moment.", action: "See the content model" },
+  { number: "02", title: "Nonprofit Ambassador", kicker: "A trusted face on the ground.", text: "Jay represents mission-driven organizations in the community, helping their work reach the people, partners and audiences it was built to serve.", action: "Explore partnerships" },
+  { number: "03", title: "Wellness Access", kicker: "Welgen One representative.", text: "As an independent community representative for Welgen One, Jay connects people with mobile wellness information, screenings and the proper patient-intake path.", action: "View Welgen services" },
+  { number: "04", title: "Live & Brand Activations", kicker: "Show the work as it happens.", text: "Live coverage, community appearances and on-camera activations designed for organizations that need authentic presence—not another generic ad.", action: "Plan an activation" },
 ];
-const services = ["Allergy testing", "Diagnostic testing", "Biometrics", "Medical consultation", "IV therapy & B12", "Dietitian & life coaching", "Genetic insights", "Community home care"];
+
+const partnershipOptions = [
+  { title: "Community Feature", text: "Place your mission inside authentic community content and real conversations." },
+  { title: "Ongoing Representation", text: "Make Jay a consistent, recognizable community representative for your organization." },
+  { title: "Custom Activation", text: "Build an event, wellness day, live broadcast or campaign around a specific goal." },
+];
 
 export default function Home() {
-  return <main>
-    <header className="nav-wrap">
-      <a className="brand" href="#top" aria-label="Welgen One home"><span className="brand-mark">W1</span><span>Welgen <b>One</b></span></a>
-      <nav aria-label="Primary navigation"><a href="#programs">Programs</a><a href="#how">How it works</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
-      <a className="button small" href={registerUrl} target="_blank" rel="noreferrer">Pre-register <span>↗</span></a>
-    </header>
-
-    <section className="hero" id="top">
-      <div className="hero-copy">
-        <p className="eyebrow"><span /> Mobile wellness · Atlanta, Georgia</p>
-        <h1>Better health should<br />meet you <em>where you are.</em></h1>
-        <p className="lede">Welgen One brings preventive screenings, personalized wellness insights and connected care directly to people, workplaces and communities.</p>
-        <div className="hero-actions"><a className="button" href={registerUrl} target="_blank" rel="noreferrer">Start your wellness journey <span>↗</span></a><a className="text-link" href="#programs">Explore our programs <span>↓</span></a></div>
-        <div className="trust-row"><div><b>20+</b><span>Partner facilities</span></div><div><b>4</b><span>States served</span></div><div><b>50+</b><span>Affiliates</span></div></div>
+  return <main>\n    <section className="jay-hero" id="top">
+      <div className="hero-index"><span>ATL</span><span>COMMUNITY / MEDIA / WELLNESS</span><span>2026</span></div>
+      <div className="jay-hero-copy">
+        <p className="overline"><i /> Jay Johnson · Atlanta, Georgia</p>
+        <h1>Multiple lanes.<br /><em>One mission.</em></h1>
+        <p className="hero-lede">Jay turns relationships, visibility and real community presence into opportunity—for people, nonprofits and brands.</p>
+        <div className="hero-buttons"><a className="primary-btn" href="#work">Explore Jay&apos;s work <span>↓</span></a><a className="line-btn" href="#partner">Build a partnership <span>↗</span></a></div>
       </div>
-      <div className="hero-visual">
-        <img src="/community-leadership.jpeg" alt="Welgen One community leader at a local event" />
-        <div className="hero-card"><span className="pulse" /><div><small>Our care model</small><b>Preventive. Personal. Mobile.</b></div></div>
-        <div className="orbit orbit-one" /><div className="orbit orbit-two" />
+      <div className="jay-portrait">
+        <div className="portrait-frame"><img src="/welgen-leadership.jpeg" alt="Jay Johnson in Atlanta" /></div>
+        <div className="portrait-tag"><span>COMMUNITY CONNECTOR</span><b>Jay Johnson</b></div>
+        <div className="red-line" />
       </div>
+      <p className="vertical-copy">ON THE GROUND · ON CAMERA · OPENING DOORS</p>
     </section>
 
-    <section className="intro" id="programs">
-      <div><p className="eyebrow dark"><span /> One connected wellness platform</p><h2>Care that moves<br />with your life.</h2></div>
-      <p>Traditional care can feel fragmented. Welgen One brings essential health information, clinical guidance and ongoing support into a simpler, community-first experience.</p>
-    </section>
-    <section className="program-grid">
-      {programs.map((p) => <article className="program" key={p.title}><span className="program-num">{p.n}</span><div><p>{p.tag}</p><h3>{p.title}</h3><p className="program-text">{p.text}</p></div><span className="program-arrow">↗</span></article>)}
+    <section className="statement">
+      <p>More than a personal brand.</p>
+      <h2>A platform for every way<br />Jay moves people <em>forward.</em></h2>
+      <div className="statement-note"><span>THE MODEL</span><p>Build trust in public. Connect people to real resources. Create content that carries the story further.</p></div>
     </section>
 
-    <section className="services">
-      <div className="services-copy"><p className="eyebrow"><span /> Wellness services</p><h2>A clearer view of<br />your whole health.</h2><p>Services may vary by location, event, clinical eligibility and provider availability. Our team can help identify the right next step.</p><a className="button light" href="tel:+18664119354">Call 866-411-WELGEN <span>↗</span></a></div>
-      <div className="service-list">{services.map((s, i) => <div key={s}><span>{String(i + 1).padStart(2, "0")}</span><b>{s}</b><span>＋</span></div>)}</div>
-    </section>
-
-    <section className="process" id="how">
-      <div className="section-head"><div><p className="eyebrow dark"><span /> The WellScreen journey</p><h2>From registration<br />to real next steps.</h2></div></div>
-      <div className="steps">
-        <article><span>1</span><h3>Pre-register</h3><p>Submit your information through the secure patient portal for eligibility and insurance review.</p></article>
-        <article><span>2</span><h3>Schedule</h3><p>Choose an appointment and complete your consent and health history forms online.</p></article>
-        <article><span>3</span><h3>Get screened</h3><p>Complete your wellness and diagnostic screening with a clinical consultation.</p></article>
-        <article><span>4</span><h3>Review results</h3><p>Receive results and recommended next steps, typically within about ten business days.</p></article>
+    <section className="work" id="work">
+      <div className="section-title"><p className="overline light"><i /> The work</p><h2>Four lanes.<br />One ecosystem.</h2><span className="section-count">01 — 04</span></div>
+      <div className="lane-list">
+        {lanes.map((lane) => <article className="lane" key={lane.number}>
+          <span className="lane-number">{lane.number}</span>
+          <div><p>{lane.kicker}</p><h3>{lane.title}</h3><p className="lane-copy">{lane.text}</p></div>
+          <a href={lane.number === "03" ? "#welgen" : lane.number === "02" ? "#partner" : "#mission"} aria-label={lane.action}>↗</a>
+        </article>)}
       </div>
     </section>
 
-    <section className="about" id="about">
-      <div className="portrait"><img src="/welgen-leadership.jpeg" alt="Welgen One representative in Atlanta" /><div className="photo-label"><small>Built in Atlanta</small><b>Rooted in community.</b></div></div>
-      <div className="about-copy"><p className="eyebrow"><span /> About Welgen One</p><h2>Healthcare access begins with trust.</h2><p>Welgen One was created to make personalized, preventive care more accessible—especially through churches, nonprofits, employers and community organizations.</p><p>Our mobile-first model meets people in familiar places, removes unnecessary barriers and makes prioritizing health feel possible.</p><blockquote>“Every customer. Every encounter. Every time.”</blockquote><a className="text-link light-link" href="#contact">Partner with Welgen One <span>→</span></a></div>
+    <section className="welgen" id="welgen">
+      <div className="welgen-brand"><span className="w-mark">W1</span><span>REPRESENTING</span><b>WELGEN ONE</b></div>
+      <div className="welgen-main">
+        <p className="overline welgen-eye"><i /> One of Jay&apos;s business lanes</p>
+        <h2>Wellness that meets<br />people where they are.</h2>
+        <p>Jay serves as a community representative connecting people and organizations to Welgen One&apos;s mobile wellness ecosystem. This is one part of Jay&apos;s broader work—not the identity of the entire site.</p>
+        <div className="welgen-actions"><a className="mint-btn" href={formDrUrl} target="_blank" rel="noreferrer">Open patient intake <span>↗</span></a><a className="welgen-link" href={welgenUrl} target="_blank" rel="noreferrer">Visit official Welgen One site <span>↗</span></a></div>
+      </div>
+      <div className="welgen-services">
+        <div><span>01</span><b>WellScreen</b><p>Mobile preventive screening and biometrics.</p></div>
+        <div><span>02</span><b>Wellness Care</b><p>Personalized consultation and wellness guidance.</p></div>
+        <div><span>03</span><b>Community Access</b><p>Connections through events, employers and local partners.</p></div>
+      </div>
+      <p className="welgen-disclaimer">Welgen One is an independent healthcare organization. Services, eligibility and scheduling are handled through Welgen One and its clinical partners.</p>
     </section>
 
-    <section className="cta" id="contact"><p className="eyebrow dark"><span /> Your health, in motion</p><h2>Ready to begin?</h2><p>Pre-register online or speak with the Welgen One team about care, events and partnership opportunities.</p><div><a className="button" href={registerUrl} target="_blank" rel="noreferrer">Pre-register today <span>↗</span></a><a className="button outline" href="mailto:info@welgenone.com">Email our team</a></div></section>
+    <section className="mission" id="mission">
+      <div className="mission-photo"><img src="/community-leadership.jpeg" alt="Jay Johnson connecting with people at a community event" /><div className="photo-stamp"><span>THE REAL WORK</span><b>People first.</b></div></div>
+      <div className="mission-copy">
+        <p className="overline light"><i /> The bigger picture</p>
+        <h2>Attention is only useful when it opens a door.</h2>
+        <p>Jay&apos;s street content, nonprofit relationships and wellness representation all support a larger goal: connect people to help, make good work visible and build a sustainable platform around community impact.</p>
+        <div className="mission-pillars"><div><span>A</span><b>Capture the story</b></div><div><span>B</span><b>Connect the resource</b></div><div><span>C</span><b>Create the opportunity</b></div></div>
+        <blockquote>“The camera gets attention. The relationship is what makes the difference.”</blockquote>
+      </div>
+    </section>
 
-    <footer><div className="footer-top"><a className="brand footer-brand" href="#top"><span className="brand-mark">W1</span><span>Welgen <b>One</b></span></a><p>Personalized wellness.<br />Delivered differently.</p><div><a href="tel:+17702120015">770.212.0015</a><a href="mailto:info@welgenone.com">info@welgenone.com</a></div></div><div className="footer-bottom"><span>309 E. Paces Ferry NE, Suite 400, Atlanta, GA 30305</span><span>© 2026 Welgen Global Enterprises LLC.</span><span>Healthcare services are subject to clinical eligibility and availability.</span></div></footer>
+    <section className="partner" id="partner">
+      <div className="partner-head"><p className="overline"><i /> Partnerships</p><h2>Put Jay&apos;s presence<br />behind your mission.</h2><p>For nonprofits, wellness organizations, community programs and values-aligned brands.</p></div>
+      <div className="partner-grid">{partnershipOptions.map((item, index) => <article key={item.title}><span>0{index + 1}</span><h3>{item.title}</h3><p>{item.text}</p><a href="#contact">Let&apos;s build it <b>↗</b></a></article>)}</div>
+    </section>
+
+    <section className="contact" id="contact">
+      <p className="overline centered"><i /> Start a conversation</p>
+      <h2>One connection can<br />change the whole route.</h2>
+      <p>Bring the mission. Jay brings the community presence, content instinct and willingness to do the work on the ground.</p>
+      <div><a className="primary-btn" href={formDrUrl} target="_blank" rel="noreferrer">Welgen patient intake <span>↗</span></a><a className="line-btn dark-line" href="#top">Back to the top <span>↑</span></a></div>
+    </section>
+
+    <footer>
+      <div className="footer-brand"><a className="jay-logo" href="#top"><span>JJ</span><b>JAY JOHNSON</b></a><p>Community. Content. Opportunity.</p></div>
+      <div className="footer-nav"><b>EXPLORE</b><a href="#work">The work</a><a href="#welgen">Welgen One</a><a href="#mission">The mission</a><a href="#partner">Partnerships</a></div>
+      <div className="footer-place"><b>BASED IN</b><p>Decatur / Atlanta<br />Georgia</p></div>
+      <div className="footer-bottom"><span>© 2026 Jay Johnson</span><span>Independent personal-business platform</span><span>Built for impact</span></div>
+    </footer>
   </main>;
 }

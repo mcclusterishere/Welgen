@@ -5,7 +5,7 @@ const tiers = [
     name: "Street Ambassador",
     price: "$497",
     period: "/ month",
-    description: "James becomes the visible face of your nonprofit on the street.",
+    description: "Jay becomes the visible face of your nonprofit on the street.",
     features: [
       "Tagged in kindness content & lives",
       "Monthly outreach report",

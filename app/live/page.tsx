@@ -10,7 +10,7 @@ export default function LivePage() {
         </h1>
         <p className="mt-2 text-muted">
           Go live from the website. Broadcast to socials without jumping between apps.
-          Meta glasses feed in clean.
+          Designed to support mobile, first-person and community-event coverage.
         </p>
       </div>
 
