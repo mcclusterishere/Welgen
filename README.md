@@ -1,53 +1,49 @@
-# Welgen Outreach Machine
+# Jay Johnson Platform
 
-**This is not a brochure site.**  
-It is the command center for kindness content, nonprofit outreach, and paid ambassador partnerships.
+A public client-ready website with three connected surfaces.
 
-## Live Scaffold (Next.js + Tailwind)
+## Public links
 
-### Pages built
-| Route | Purpose |
-|-------|---------|
-| `/` | **Command Center** – talk to the machine (chat UI). Type commands like “email 150 nonprofits…” |
-| `/content` | Kindness Content library – place for Meta glasses street footage |
-| `/outreach` | Email campaign builder – subject, body, count of nonprofits |
-| `/ambassador` | Paid nonprofit partnership tiers (Street / Impact / Custom) |
-| `/live` | Go-live launcher + cross-post placeholder |
-| `/mission` | Mission statement + Welgen wellness + housing ambition + FormDr link |
+- **Public profile:** `/`
+- **Jay Connect PWA:** `/app`
+- **Professional dashboard:** `/dashboard`
 
-### Stack
-- Next.js 14 (App Router)
-- TypeScript
-- Tailwind CSS (dark street-authentic theme)
-- Lucide icons
+## Public profile
 
-### Run locally
+The regular page introduces Jay’s Chicago background, 2023 move to Atlanta, community mission, court and community partnership goals, wholesale real-estate relationships and nonprofit aspiration.
+
+## Jay Connect PWA
+
+The installable app has exactly three primary tabs:
+
+1. **Wellness** — general health check-ins, Welgen One programs and secure patient-intake handoff.
+2. **Jay** — the default center tab with Jay’s story and goals.
+3. **Connect** — guided filtering for people who need help, people who want to help and partner organizations.
+
+## Professional dashboard
+
+The dashboard gives Jay and the client a polished operational overview:
+
+- Four partnership lanes
+- Public-resource status
+- Intake pathways
+- Quick actions
+- Relationship-pipeline setup
+- Clear next-build checklist
+
+The current dashboard contains no private intake records. A secure destination and database can be connected after Jay provides his preferred email or phone and the handling policy is established.
+
+## PWA support
+
+- Installable manifest
+- iOS Add to Home Screen guidance
+- Offline app shell
+- Maskable icons
+- Mobile safe-area support
+
+## Run locally
+
 ```bash
 npm install
 npm run dev
 ```
-Open http://localhost:3000
-
-### Deploy
-Push to Vercel (or any Next host). Zero config needed for the scaffold.
-
----
-
-## The Vision (locked)
-1. Authentic street conversations recorded with Meta glasses → kindness content.
-2. Content gets monetized + generates tips/Cash Apps.
-3. Website is the operator console: “Hey website, email these nonprofits…”
-4. Nonprofits pay to make James their street ambassador.
-5. Welgen wellness (mobile check-ups, FormDr) + housing non-profit sit inside the same mission.
-
-**Address**: 4166 Snapfinger Drive / Snapfinger Woods Drive, Decatur, GA 30035  
-**FormDr**: [Patient form](https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk)
-
-## Next wiring (priority order)
-1. Gmail / email service connection for real outreach campaigns
-2. Content upload + embedding for first Meta glasses footage
-3. Stripe for ambassador payments
-4. Live stream + social cross-post integrations
-
----
-*The website is the control panel. Everything else is execution.*

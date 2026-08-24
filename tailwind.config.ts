@@ -9,16 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0a0a0a",
-        surface: "#141414",
-        border: "#262626",
-        accent: "#22c55e",
-        "accent-dim": "#16a34a",
-        muted: "#a3a3a3",
+        background: "#f2eee4",
+        surface: "#faf8f2",
+        border: "rgba(17, 27, 46, 0.18)",
+        accent: "#2450d5",
+        "accent-dim": "#1b3da9",
+        muted: "#596275",
       },
-      fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-      },
+      fontFamily: { sans: ["Arial", "Helvetica", "sans-serif"] },
     },
   },
   plugins: [],

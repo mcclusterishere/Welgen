@@ -1,23 +1,25 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import { Navbar } from "@/components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Welgen | Outreach Machine",
-  description: "Command center for kindness content, nonprofit outreach, and community impact. Getting people off the street.",
+  metadataBase: new URL("https://welgen-one-modern.mccluster.chatgpt.site"),
+  title: "Jay Johnson | Community Connection",
+  description: "Meet Jay, explore wellness resources and connect for help, partnership or community impact.",
+  manifest: "/manifest.webmanifest",
+  appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Jay Connect" },
+  icons: { icon: "/icon-192.png", apple: "/icon-192.png" },
+  openGraph: { title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Jay Johnson community connection app" }] },
+  twitter: { card: "summary_large_image", title: "Jay Johnson", description: "Community. Wellness. Connection.", images: ["/og.png"] },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="en">
-      <body className="min-h-screen bg-background text-white antialiased">
-        <Navbar />
-        <main className="pt-16">{children}</main>
-      </body>
-    </html>
-  );
+export const viewport: Viewport = {
+  themeColor: "#0b1629",
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+  viewportFit: "cover",
+};
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return <html lang="en"><body>{children}</body></html>;
 }
