@@ -125,6 +125,54 @@ async function freshToken(): Promise<string | null> {
   }
 }
 
+/**
+ * Ask Supabase to email a recovery link.
+ *
+ * Whether the mail actually arrives depends on the project's SMTP: the
+ * built-in sender is rate-limited and frequently does not reach external
+ * mailboxes, so this is the convenient path rather than the dependable
+ * one. The dependable path is changePassword() below, which needs no
+ * email at all.
+ *
+ * Always resolves. The endpoint deliberately answers the same way for a
+ * known and an unknown address so that it cannot be used to discover who
+ * has an account, and this mirrors that.
+ */
+export async function requestPasswordReset(email: string): Promise<void> {
+  const redirectTo =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/admin/reset/`
+      : "https://jnhelevate.com/admin/reset/";
+
+  await fetch(`${URL_}/auth/v1/recover`, {
+    method: "POST",
+    headers: { apikey: ANON, "content-type": "application/json" },
+    body: JSON.stringify({ email, gotrue_meta_security: {} , redirect_to: redirectTo }),
+  }).catch(() => {});
+}
+
+/** Set a new password using the token from a recovery link. */
+export async function setPasswordWithToken(accessToken: string, password: string): Promise<void> {
+  const r = await fetch(`${URL_}/auth/v1/user`, {
+    method: "PUT",
+    headers: { apikey: ANON, Authorization: `Bearer ${accessToken}`, "content-type": "application/json" },
+    body: JSON.stringify({ password }),
+  });
+  const p = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(p?.msg || p?.error_description || p?.error || `could not set the password (${r.status})`);
+}
+
+/**
+ * Change the password of the signed-in user. No email involved, which is
+ * why this is the route to trust: it works on a project with no SMTP
+ * configured at all.
+ */
+export async function changePassword(password: string): Promise<void> {
+  const token = await freshToken();
+  if (!token) throw new NotSignedIn();
+  await setPasswordWithToken(token, password);
+}
+
 export class NotSignedIn extends Error {
   constructor() {
     super("signed out");

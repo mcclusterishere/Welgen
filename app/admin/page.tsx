@@ -18,9 +18,11 @@
 import { useCallback, useEffect, useState } from "react";
 import {
   backendConfigured,
+  changePassword,
   here,
   loadSession,
   NotSignedIn,
+  requestPasswordReset,
   signIn,
   signOut,
   type Campaign,
@@ -28,7 +30,7 @@ import {
   type Session,
 } from "@/lib/here";
 
-type Tab = "chat" | "outreach" | "social";
+type Tab = "chat" | "outreach" | "social" | "account";
 
 const NAVY = "#0b1629";
 const BLUE = "#3157d5";
@@ -62,6 +64,7 @@ function SignIn({ onSignedIn }: { onSignedIn: (s: Session) => void }) {
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
+  const [sentReset, setSentReset] = useState(false);
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -74,6 +77,15 @@ function SignIn({ onSignedIn }: { onSignedIn: (s: Session) => void }) {
     } finally {
       setBusy(false);
     }
+  };
+
+  const forgot = async () => {
+    if (!email.trim()) return setError("Type your email address first, then tap reset.");
+    setError("");
+    await requestPasswordReset(email.trim());
+    // Deliberately says the same thing whether or not the address is on
+    // file — this page should not be usable to find out who has an account.
+    setSentReset(true);
   };
 
   return (
@@ -173,6 +185,24 @@ function SignIn({ onSignedIn }: { onSignedIn: (s: Session) => void }) {
           {busy ? "Signing in…" : "Sign in"}
         </button>
 
+        <button
+          type="button"
+          onClick={forgot}
+          style={{
+            border: 0, background: "none", color: BLUE, padding: 0, marginTop: 14,
+            fontSize: 11, fontWeight: 700, cursor: "pointer", textDecoration: "underline",
+          }}
+        >
+          Forgot your password?
+        </button>
+
+        {sentReset && (
+          <p style={box("#e8ecfa", "#2c3f7a")}>
+            If that address has an account, a reset link is on its way. Links expire and work once.
+            If it does not arrive, ask the studio to reset it for you.
+          </p>
+        )}
+
         <p style={{ fontSize: 10, lineHeight: 1.6, color: "#959189", margin: "16px 0 0" }}>
           Accounts are created by the studio. There is no public sign-up.
         </p>
@@ -202,6 +232,7 @@ function Console({ session, onSignedOut }: { session: Session; onSignedOut: () =
               ["chat", "⌘", "Ask"],
               ["outreach", "✉", "Outreach"],
               ["social", "◎", "Channels"],
+              ["account", "☉", "Account"],
             ] as [Tab, string, string][]
           ).map(([id, icon, label]) => (
             <a
@@ -238,7 +269,13 @@ function Console({ session, onSignedOut }: { session: Session; onSignedOut: () =
           <div>
             <span>OPERATIONS</span>
             <h1>
-              {tab === "chat" ? "Talk to the backend." : tab === "outreach" ? "Outreach." : "Channels."}
+              {tab === "chat"
+                ? "Talk to the backend."
+                : tab === "outreach"
+                  ? "Outreach."
+                  : tab === "social"
+                    ? "Channels."
+                    : "Your account."}
             </h1>
           </div>
         </header>
@@ -246,6 +283,7 @@ function Console({ session, onSignedOut }: { session: Session; onSignedOut: () =
         {tab === "chat" && <AskPanel />}
         {tab === "outreach" && <OutreachPanel />}
         {tab === "social" && <SocialPanel />}
+        {tab === "account" && <AccountPanel session={session} />}
       </div>
     </main>
   );
@@ -528,6 +566,94 @@ function SocialPanel() {
         </div>
       </section>
     </>
+  );
+}
+
+/* ─────────────────────────── account ─────────────────────────── */
+
+/**
+ * Changing your own password while signed in. This needs no email at
+ * all, which is why it is the route to trust: the project's default
+ * mailer is rate-limited and often will not reach an external mailbox,
+ * so a "reset link" can quietly never arrive. This cannot.
+ */
+function AccountPanel({ session }: { session: Session }) {
+  const [password, setPassword] = useState("");
+  const [confirm, setConfirm] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
+  const [error, setError] = useState("");
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError("");
+    setDone(false);
+    if (password.length < 8) return setError("Use at least 8 characters.");
+    if (password !== confirm) return setError("Those two do not match.");
+
+    setBusy(true);
+    try {
+      await changePassword(password);
+      setPassword("");
+      setConfirm("");
+      setDone(true);
+    } catch (err) {
+      setError(err instanceof NotSignedIn ? "Session expired — sign in again." : String(err));
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <section className="pipeline-panel" style={{ maxWidth: 520 }}>
+      <div className="panel-head">
+        <div>
+          <span>SIGNED IN AS</span>
+          <h2>{session.user.email}</h2>
+        </div>
+      </div>
+
+      <p style={{ fontSize: 11, lineHeight: 1.7, color: "#68738a", margin: "0 0 18px" }}>
+        Change your password here. It takes effect immediately and does not depend on email
+        reaching you.
+      </p>
+
+      <form onSubmit={submit}>
+        <label style={{ ...labelStyle, marginTop: 0 }}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "#596576" }}>New password</span>
+          <input
+            type="password"
+            autoComplete="new-password"
+            required
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            style={inputStyle}
+          />
+        </label>
+        <label style={labelStyle}>
+          <span style={{ fontSize: 11, fontWeight: 700, color: "#596576" }}>Type it again</span>
+          <input
+            type="password"
+            autoComplete="new-password"
+            required
+            value={confirm}
+            onChange={(e) => setConfirm(e.target.value)}
+            style={inputStyle}
+          />
+        </label>
+
+        {error && <p style={box("#fdecee", "#a3202f")}>{error}</p>}
+        {done && <p style={box("#e2f3eb", "#087452")}>Password changed. It works from now on.</p>}
+
+        <button
+          type="submit"
+          disabled={busy}
+          style={{ ...sendBtn, marginTop: 18, padding: "14px 20px", width: "100%", opacity: busy ? 0.6 : 1 }}
+        >
+          {busy ? "Saving…" : "Change password"}
+        </button>
+      </form>
+    </section>
   );
 }
 

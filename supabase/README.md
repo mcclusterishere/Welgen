@@ -80,13 +80,31 @@ reader as visible source. So `unsubscribe` writes the suppression and
    still override them if you ever point a build at a different project.
    The service role key is **not** here and must never be: it bypasses
    RLS and belongs only in the functions' server-side environment.
-3. **Give Jay a login.** Create the user in Supabase → Authentication →
-   Users, then make them an owner of the org, or RLS correctly returns
-   nothing:
+3. **Logins — done.** `jjohnson.inef@gmail.com` and
+   `matthew@mccluster.org` both exist, are email-confirmed, and are
+   `owner` on the `jnh-elevate` org. To add anyone else, create the user
+   in Supabase → Authentication → Users, then:
    ```sql
    insert into org_members (org_id, profile_id, role)
-   select o.id, '<auth-user-uuid>', 'owner' from orgs o where o.slug = 'jnh-elevate';
+   select o.id, u.id, 'owner'
+   from orgs o, auth.users u
+   where o.slug = 'jnh-elevate' and u.email = '<their-email>'
+   on conflict (org_id, profile_id) do update set role = 'owner';
    ```
+   Without that row RLS correctly shows a signed-in user nothing.
+
+   **Passwords.** `/admin` → Account changes your own password with no
+   email involved — that is the route to trust. "Forgot your password?"
+   on the sign-in page emails a link to `/admin/reset/`, which only works
+   once SMTP is sorted (see below).
+
+   **SMTP.** The project uses Supabase's built-in mailer, which is
+   rate-limited and often will not deliver to an external mailbox. Until
+   a real SMTP provider is set in Authentication → Emails, treat reset
+   emails as unreliable and reset passwords from the Account tab or the
+   dashboard instead. Add `https://jnhelevate.com/admin/reset/` to
+   Authentication → URL Configuration → Redirect URLs when you do wire
+   SMTP, or the link in the email will be rejected on arrival.
 4. **Real sender details.** The seeded sender identity has the literal
    `SET REAL POSTAL ADDRESS BEFORE SENDING`, and the send path refuses
    that string on purpose. Set a real mailing address, verify the sending
