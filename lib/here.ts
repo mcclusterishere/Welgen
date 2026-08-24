@@ -14,8 +14,28 @@
  * cannot break anyone else's build.
  */
 
-const URL_ = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
+/**
+ * The Here project this site is a client of.
+ *
+ * These are checked in deliberately. A Supabase URL and anon key are
+ * public values — they ship inside the JavaScript bundle of every
+ * Supabase app, so anyone can read them out of the browser regardless.
+ * The security boundary is row-level security on the tables and the
+ * checks inside the edge functions, not the secrecy of this key. What
+ * must never appear here is the service role key, which bypasses RLS
+ * entirely and lives only in the functions' server-side environment.
+ *
+ * Checked in rather than injected because a missing build variable
+ * fails silently and invisibly: the site still builds, still deploys,
+ * and quietly drops every form submission. The env vars still override,
+ * so pointing this at a different project stays a one-line change.
+ */
+const DEFAULT_URL = "https://zmnhbrjyhxzhkxmhkexs.supabase.co";
+const DEFAULT_ANON =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inptbmhicmp5aHh6aGt4bWhrZXhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQyMTQ3MTMsImV4cCI6MjA5OTc5MDcxM30.guqcG26tPMCeXrFQ91PWNKoXdNFa1C3C9GUzneyWdFk";
+
+const URL_ = process.env.NEXT_PUBLIC_SUPABASE_URL || DEFAULT_URL;
+const ANON = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || DEFAULT_ANON;
 
 export const backendConfigured = Boolean(URL_ && ANON);
 

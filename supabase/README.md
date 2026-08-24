@@ -73,12 +73,13 @@ reader as visible source. So `unsubscribe` writes the suppression and
    - `ANTHROPIC_API_KEY` — until this exists, `ops-chat` returns a clear 503
    - `PUBLIC_SITE_URL` = `https://jnhelevate.com`
    - Channel tokens as needed: `JNH_TELEGRAM_TOKEN`, `JNH_META_PAGE_TOKEN`, `JNH_SLACK_BOT_TOKEN`, …
-2. **GitHub → Settings → Secrets and variables → Actions → Variables:**
-   - `NEXT_PUBLIC_SUPABASE_URL` = `https://zmnhbrjyhxzhkxmhkexs.supabase.co`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY` = the project's anon key
-   (Both are public by design — RLS is what protects the data. Without
-   them the site still builds; `/admin` and the form just say the backend
-   is not configured.)
+2. **Nothing.** The project URL and anon key are checked into
+   `lib/here.ts`, so the site works as deployed. Both are public values —
+   they ship in the browser bundle of every Supabase app and RLS is what
+   protects the data. The `NEXT_PUBLIC_SUPABASE_*` Actions variables
+   still override them if you ever point a build at a different project.
+   The service role key is **not** here and must never be: it bypasses
+   RLS and belongs only in the functions' server-side environment.
 3. **Give Jay a login.** Create the user in Supabase → Authentication →
    Users, then make them an owner of the org, or RLS correctly returns
    nothing:

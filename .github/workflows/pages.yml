@@ -37,11 +37,11 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
           NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
-          # Backend (the Here Supabase project). Safe to expose: the anon
-          # key is public by design and every table is behind row-level
-          # security. Without these the site still builds and renders —
-          # the intake form and /admin just report that no backend is
-          # configured instead of failing silently.
+          # Backend (the Here Supabase project). Optional overrides —
+          # lib/here.ts carries working defaults, so the site is fully
+          # functional without them. Set these only to point a build at a
+          # different Supabase project. Safe either way: the anon key is
+          # public by design and every table is behind row-level security.
           NEXT_PUBLIC_SUPABASE_URL: ${{ vars.NEXT_PUBLIC_SUPABASE_URL }}
           NEXT_PUBLIC_SUPABASE_ANON_KEY: ${{ vars.NEXT_PUBLIC_SUPABASE_ANON_KEY }}
         run: npm run build
