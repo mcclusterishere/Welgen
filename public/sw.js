@@ -1,5 +1,7 @@
-const CACHE = "jay-connect-v1";
-const SHELL = ["/", "/app", "/dashboard", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png", "/welgen-leadership.jpeg", "/community-leadership.jpeg"];
+const CACHE = "jay-connect-v2";
+const ROOT = new URL(self.registration.scope).pathname.replace(/\/$/, "");
+const scoped = (path) => `${ROOT}${path}` || "/";
+const SHELL = ["/", "/app/", "/dashboard/", "/manifest.webmanifest", "/icon-192.png", "/icon-512.png", "/welgen-leadership.jpeg", "/community-leadership.jpeg"].map(scoped);
 self.addEventListener("install", (event) => {
   event.waitUntil(caches.open(CACHE).then((cache) => cache.addAll(SHELL)));
   self.skipWaiting();
@@ -14,5 +16,5 @@ self.addEventListener("fetch", (event) => {
     const copy = response.clone();
     caches.open(CACHE).then((cache) => cache.put(event.request, copy));
     return response;
-  }).catch(() => caches.match(event.request).then((cached) => cached || caches.match("/"))));
+  }).catch(() => caches.match(event.request).then((cached) => cached || caches.match(scoped("/")))));
 });

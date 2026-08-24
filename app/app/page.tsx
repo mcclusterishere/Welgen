@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 
 const FORM_DR = "https://app.formdr.com/practice/NDA4MjA=/form/4SwPxMEauV-yK4wEmZP39IJPxbZ0H4wk";
 const WELGEN = "https://welgenone.com/";
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 type Tab = "wellness" | "jay" | "connect";
 type Role = "support" | "helper" | "partner" | "";
@@ -46,7 +47,7 @@ export default function JayApp() {
   useEffect(() => {
     const requestedTab = new URLSearchParams(window.location.search).get("tab");
     if (requestedTab === "wellness" || requestedTab === "connect" || requestedTab === "jay") setTab(requestedTab);
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => undefined);
+    if ("serviceWorker" in navigator) navigator.serviceWorker.register(`${BASE_PATH}/sw.js`, { scope: `${BASE_PATH}/` }).catch(() => undefined);
     const onPrompt = (event: Event) => {
       event.preventDefault();
       setInstallPrompt(event as Event & { prompt: () => Promise<void> });
@@ -109,7 +110,7 @@ Note: ${note || "None"}`;
     <div className="screen" aria-live="polite">
       {tab === "jay" && <section className="jay-screen" aria-labelledby="jay-title">
         <div className="profile-hero">
-          <img src="/welgen-leadership.jpeg" alt="Jay Johnson" />
+          <img src={`${BASE_PATH}/welgen-leadership.jpeg`} alt="Jay Johnson" />
           <div className="profile-shade" />
           <div className="profile-copy"><span className="profile-label">MEET JAY</span><h1 id="jay-title">Jay<br />Johnson</h1><p>Connector · Ambassador · Builder</p></div>
           <span className="chicago-chip">CHICAGO → ATLANTA</span>

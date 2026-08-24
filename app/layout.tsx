@@ -1,15 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
+const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? `https://mcclusterishere.github.io${BASE_PATH}`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://welgen-one-modern.mccluster.chatgpt.site"),
+  metadataBase: new URL(`${SITE_URL}/`),
   title: "Jay Johnson | Community Connection",
   description: "Meet Jay, explore wellness resources and connect for help, partnership or community impact.",
-  manifest: "/manifest.webmanifest",
+  manifest: `${BASE_PATH}/manifest.webmanifest`,
   appleWebApp: { capable: true, statusBarStyle: "black-translucent", title: "Jay Connect" },
-  icons: { icon: "/icon-192.png", apple: "/icon-192.png" },
-  openGraph: { title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [{ url: "/og.png", width: 1200, height: 630, alt: "Jay Johnson community connection app" }] },
-  twitter: { card: "summary_large_image", title: "Jay Johnson", description: "Community. Wellness. Connection.", images: ["/og.png"] },
+  icons: { icon: `${BASE_PATH}/icon-192.png`, apple: `${BASE_PATH}/icon-192.png` },
+  openGraph: { title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [{ url: `${BASE_PATH}/og.png`, width: 1200, height: 630, alt: "Jay Johnson community connection app" }] },
+  twitter: { card: "summary_large_image", title: "Jay Johnson", description: "Community. Wellness. Connection.", images: [`${BASE_PATH}/og.png`] },
 };
 
 export const viewport: Viewport = {
