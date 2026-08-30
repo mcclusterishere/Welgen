@@ -1,0 +1,63 @@
+/* Jay Johnson public site — 2026 reskin */
+.jj{background:#070706;color:#f3ece0;min-height:100vh;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+.jj a{color:inherit;text-decoration:none}
+.jj-nav{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 6vw;background:rgba(7,7,6,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(201,161,91,.18)}
+.jj-logo{display:flex;align-items:center;gap:12px;letter-spacing:.16em;text-transform:uppercase;font-size:11px;font-weight:800}
+.jj-logo span{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#c9a15b;color:#140f08;font-size:11px}
+.jj-nav nav{display:flex;gap:28px;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#cfc6b6}
+.jj-nav-actions{display:flex;gap:10px;align-items:center}
+.jj-solid,.jj-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+.jj-solid{background:#c9a15b;color:#140f08}
+.jj-ghost{border:1px solid rgba(243,236,224,.28)}
+.jj-hero{min-height:calc(100svh - 76px);display:grid;grid-template-columns:1.05fr .95fr;gap:4vw;padding:4vh 6vw 8vh;align-items:center}
+.jj-plan{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#c9a15b;margin:0 0 18px;font-weight:800}
+.jj-kicker{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:#c9a15b;font-weight:800;margin:0 0 16px}
+.jj-kicker.light{color:#e8d7b0}
+.jj-hero h1{font:400 clamp(4.6rem,12vw,9.2rem)/.82 "Iowan Old Style",Georgia,"Times New Roman",serif;letter-spacing:-.06em;margin:0 0 22px}
+.jj-hero h1 em{font-style:italic;color:#c9a15b}
+.jj-lede{max-width:34rem;font-size:1.08rem;line-height:1.7;color:#c8c0b3;margin:0}
+.jj-hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.jj-portrait{margin:0;position:relative;min-height:70vh;overflow:hidden;border-radius:4px}
+.jj-portrait img{width:100%;height:100%;object-fit:cover;filter:saturate(.86) contrast(1.05)}
+.jj-portrait figcaption{position:absolute;left:20px;bottom:20px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#fff;text-shadow:0 8px 24px #000}
+.jj-about{padding:12vh 8vw}
+.jj-about h2,.jj-work h2,.jj-next h2,.jj-media h2,.jj-cta h2{font:400 clamp(2.4rem,6vw,5.2rem)/.95 "Iowan Old Style",Georgia,serif;letter-spacing:-.04em;margin:0 0 28px}
+.jj-cols{display:grid;grid-template-columns:1fr 1fr;gap:48px;border-top:1px solid rgba(201,161,91,.25);padding-top:28px}
+.jj-cols p{margin:0;color:#c8c0b3;line-height:1.8;font-size:1.02rem}
+.jj-work{background:#10100e;padding:12vh 7vw;display:grid;grid-template-columns:.42fr .58fr;gap:7vw}
+.jj-work ol{list-style:none;margin:0;padding:0;border-top:1px solid rgba(255,255,255,.12)}
+.jj-work li{display:grid;grid-template-columns:52px 1fr;gap:16px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+.jj-work li span{color:#c9a15b;font-family:Georgia,serif}
+.jj-work h3{margin:0 0 8px;font:400 1.8rem Georgia,serif}
+.jj-work p{margin:0;color:#b9b2a6;line-height:1.65}
+.jj-next{display:grid;grid-template-columns:1fr 1fr;min-height:640px}
+.jj-next figure{margin:0;overflow:hidden}
+.jj-next img{width:100%;height:100%;object-fit:cover;filter:saturate(.75)}
+.jj-next>div{background:#8a1e2b;padding:10vh 7vw}
+.jj-next>div p:not(.jj-kicker){color:#f3dfe2;line-height:1.75}
+.jj-next ul{list-style:none;margin:32px 0 0;padding:0;border-top:1px solid rgba(255,255,255,.22)}
+.jj-next li{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.22)}
+.jj-media{padding:12vh 7vw}
+.jj-media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.jj-media-grid img,.jj-media-grid video{width:100%;aspect-ratio:16/11;object-fit:cover;background:#111;border-radius:4px}
+.jj-doors{padding:0 7vw 12vh;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.jj-doors a{min-height:280px;padding:28px;border:1px solid rgba(201,161,91,.22);display:flex;flex-direction:column;background:#10100e}
+.jj-doors small{letter-spacing:.18em;text-transform:uppercase;color:#c9a15b;font-size:10px;font-weight:800}
+.jj-doors h3{font:400 2rem Georgia,serif;margin:36px 0 12px}
+.jj-doors p{margin:0;color:#b9b2a6;line-height:1.65}
+.jj-cta{text-align:center;padding:14vh 6vw;background:radial-gradient(circle at 50% 0,rgba(201,161,91,.16),transparent 46%)}
+.jj-cta>p{letter-spacing:.22em;text-transform:uppercase;color:#c9a15b;font-size:11px;font-weight:800}
+.jj-cta em{display:block;font-style:italic;color:#c9a15b}
+.jj-foot{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;padding:36px 6vw 48px;border-top:1px solid rgba(201,161,91,.18);color:#9d968b;font-size:12px}
+.jj-foot p{text-align:center;font:400 1.1rem Georgia,serif;color:#e8dfd2;margin:0}
+.jj-foot span{text-align:right}
+.site-editor{display:grid;gap:14px}
+.site-editor label{display:grid;gap:6px;font-size:11px;font-weight:800;color:#596576}
+.site-editor input,.site-editor textarea{border:1px solid #d9d6ce;border-radius:12px;padding:12px;font-size:13px}
+@media(max-width:900px){
+  .jj-nav nav{display:none}
+  .jj-hero,.jj-about,.jj-work,.jj-next,.jj-doors,.jj-foot,.jj-cols{grid-template-columns:1fr}
+  .jj-portrait{min-height:52vh}
+  .jj-next figure{min-height:420px}
+  .jj-foot span,.jj-foot p{text-align:left}
+}
