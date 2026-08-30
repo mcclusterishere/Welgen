@@ -7,6 +7,17 @@ A public client-ready website with three connected surfaces.
 - **Public profile:** https://jnhelevate.com/
 - **Jay Connect PWA:** https://jnhelevate.com/app/
 - **Professional dashboard:** https://jnhelevate.com/dashboard/
+- **Client login / site editor:** https://jnhelevate.com/admin/
+
+## Client login and site editor
+
+Jay signs in at https://jnhelevate.com/admin/
+
+The studio creates the account on the McCluster / HERE backend. There is no public sign-up.
+
+Once signed in, the **Site** tab edits homepage copy, photos and videos. Publish writes the live overlay for this browser; download JSON and drop it back into the repo when you want the change baked into the next Pages deploy.
+
+Membership: McCluster Sites · Web is marked active. The McCluster account layer is https://matthew.mccluster.org/account.html
 
 ## Public profile
 
@@ -22,24 +33,7 @@ The installable app has exactly three primary tabs:
 
 ## Professional dashboard
 
-The dashboard gives Jay and the client a polished operational overview:
-
-- Four partnership lanes
-- Public-resource status
-- Intake pathways
-- Quick actions
-- Relationship-pipeline setup
-- Clear next-build checklist
-
-The current dashboard contains no private intake records. A secure destination and database can be connected after Jay provides his preferred email or phone and the handling policy is established.
-
-## PWA support
-
-- Installable manifest
-- iOS Add to Home Screen guidance
-- Offline app shell
-- Maskable icons
-- Mobile safe-area support
+The dashboard gives Jay and the client a polished operational overview of partnership lanes, public resources, intake pathways and next actions.
 
 ## Run locally
 
